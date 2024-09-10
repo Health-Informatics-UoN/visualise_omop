@@ -1,0 +1,656 @@
+,domain_id,vocabulary_id,concept_class_id,standard_concept,count
+0,Condition,CO-CONNECT,Clinical Finding,,16
+1,Condition,HCPCS,HCPCS Modifier,S,1
+2,Condition,ICD10,ICD10 code,,12227
+3,Condition,ICD10,ICD10 Hierarchy,,1598
+4,Condition,ICD10,ICD10 SubChapter,,274
+5,Condition,ICD10CM,3-char billing code,,231
+6,Condition,ICD10CM,3-char nonbill code,,1331
+7,Condition,ICD10CM,4-char billing code,,4832
+8,Condition,ICD10CM,4-char nonbill code,,3272
+9,Condition,ICD10CM,5-char billing code,,6400
+10,Condition,ICD10CM,5-char nonbill code,,6194
+11,Condition,ICD10CM,6-char billing code,,9615
+12,Condition,ICD10CM,6-char nonbill code,,8934
+13,Condition,ICD10CM,7-char billing code,,47404
+14,Condition,ICD9CM,3-dig billing code,,90
+15,Condition,ICD9CM,3-dig billing E code,,21
+16,Condition,ICD9CM,3-dig billing V code,,1
+17,Condition,ICD9CM,3-dig nonbill code,,816
+18,Condition,ICD9CM,3-dig nonbill E code,,45
+19,Condition,ICD9CM,3-dig nonbill V code,,15
+20,Condition,ICD9CM,4-dig billing code,,3720
+21,Condition,ICD9CM,4-dig billing E code,,584
+22,Condition,ICD9CM,4-dig billing V code,,77
+23,Condition,ICD9CM,4-dig nonbill code,,1672
+24,Condition,ICD9CM,4-dig nonbill V code,,25
+25,Condition,ICD9CM,5-dig billing code,,7999
+26,Condition,ICD9CM,5-dig billing V code,,81
+27,Condition,ICD9CM,ICD9CM code,,3
+28,Condition,OMOP Extension,Clinical Finding,S,87
+29,Condition,OMOP Extension,Clinical Finding,,8
+30,Condition,OMOP Extension,Disorder,S,254
+31,Condition,OPCS4,Clinical Finding,S,1
+32,Condition,OPCS4,Clinical Finding,,5
+33,Condition,PPI,Answer,,74
+34,Condition,Read,Read,,47836
+35,Condition,SNOMED,Body Structure,,2
+36,Condition,SNOMED,Clinical Finding,S,11170
+37,Condition,SNOMED,Clinical Finding,,5672
+38,Condition,SNOMED,Context-dependent,S,8
+39,Condition,SNOMED,Context-dependent,,52
+40,Condition,SNOMED,Disorder,S,85710
+41,Condition,SNOMED,Disorder,,52040
+42,Condition,SNOMED,Event,,1
+43,Condition,SNOMED,Staging / Scales,,1
+44,Condition/Device,ICD10CM,4-char billing code,,1
+45,Condition/Meas,ICD10CM,3-char billing code,,1
+46,Condition/Meas,ICD10CM,7-char billing code,,7
+47,Condition/Meas,Read,Read,,25
+48,Condition/Obs,Read,Read,,17
+49,Condition/Procedure,Read,Read,,2
+50,Condition Status,Condition Status,Condition Status,S,22
+51,Cost,Cost,Detail,S,24
+52,Cost,Cost,Summary,S,27
+53,Currency,Currency,Currency,S,180
+54,Device,CO-CONNECT,Device,,277
+55,Device,dm+d,AMP,S,95184
+56,Device,dm+d,AMPP,S,101193
+57,Device,dm+d,Brand Name,,18
+58,Device,dm+d,Ingredient,,2
+59,Device,dm+d,Supplier,,1
+60,Device,dm+d,VMP,S,6165
+61,Device,dm+d,VMP,,7
+62,Device,dm+d,VMPP,S,10139
+63,Device,dm+d,VTM,,16
+64,Device,HCPCS,HCPCS,S,4905
+65,Device,HCPCS,HCPCS,,262
+66,Device,HCPCS,HCPCS Class,,11
+67,Device,HCPCS,HCPCS Modifier,S,42
+68,Device,ICD10PCS,ICD10PCS,S,2
+69,Device,ICD10PCS,ICD10PCS Hierarchy,S,1
+70,Device,NDC,Device,S,11667
+71,Device,NDC,Device,,342
+72,Device,OMOP Extension,Physical Object,S,21
+73,Device,OPCS4,Physical Object,S,1
+74,Device,OPCS4,Physical Object,,9
+75,Device,OPCS4,Substance,,1
+76,Device,Read,Read,,276
+77,Device,SNOMED,Clinical Finding,,1
+78,Device,SNOMED,Context-dependent,,1452
+79,Device,SNOMED,Pharma/Biol Product,S,385
+80,Device,SNOMED,Pharma/Biol Product,,2533
+81,Device,SNOMED,Physical Object,S,13198
+82,Device,SNOMED,Physical Object,,198614
+83,Device,SNOMED,Qualifier Value,S,24
+84,Device,SNOMED,Qualifier Value,,11
+85,Device,SNOMED,Substance,S,1165
+86,Device,SNOMED,Substance,,590
+87,Device,SPL,Device,C,1344
+88,Device/Drug,Read,Read,,6
+89,Device/Procedure,Read,Read,,9
+90,Drug,ATC,ATC 1st,C,14
+91,Drug,ATC,ATC 2nd,C,94
+92,Drug,ATC,ATC 3rd,C,269
+93,Drug,ATC,ATC 4th,C,909
+94,Drug,ATC,ATC 4th,,2
+95,Drug,ATC,ATC 5th,C,5223
+96,Drug,ATC,ATC 5th,,229
+97,Drug,CO-CONNECT,Ingredient,,8
+98,Drug,dm+d,AMP,,55948
+99,Drug,dm+d,AMPP,,68033
+100,Drug,dm+d,Brand Name,,12558
+101,Drug,dm+d,Form,,313
+102,Drug,dm+d,Ingredient,,5482
+103,Drug,dm+d,Supplier,,1866
+104,Drug,dm+d,VMP,,20135
+105,Drug,dm+d,VMPP,,24875
+106,Drug,dm+d,VTM,,3496
+107,Drug,HCPCS,HCPCS,,1907
+108,Drug,HCPCS,HCPCS Class,,4
+109,Drug,ICD10PCS,ICD10PCS,,173
+110,Drug,NAACCR,NAACCR Value,,13
+111,Drug,NDC,11-digit NDC,,882510
+112,Drug,NDC,9-digit NDC,,301192
+113,Drug,PPI,Answer,,2
+114,Drug,Read,Read,,378
+115,Drug,RxNorm,Branded Dose Group,C,19626
+116,Drug,RxNorm,Branded Dose Group,,3762
+117,Drug,RxNorm,Branded Drug,S,20145
+118,Drug,RxNorm,Branded Drug,,18938
+119,Drug,RxNorm,Branded Drug Comp,S,18744
+120,Drug,RxNorm,Branded Drug Comp,,18004
+121,Drug,RxNorm,Branded Drug Form,S,14115
+122,Drug,RxNorm,Branded Drug Form,,12480
+123,Drug,RxNorm,Branded Pack,S,921
+124,Drug,RxNorm,Branded Pack,,387
+125,Drug,RxNorm,Brand Name,,19469
+126,Drug,RxNorm,Clinical Dose Group,C,16106
+127,Drug,RxNorm,Clinical Dose Group,,1635
+128,Drug,RxNorm,Clinical Drug,S,35179
+129,Drug,RxNorm,Clinical Drug,,17904
+130,Drug,RxNorm,Clinical Drug Comp,S,27602
+131,Drug,RxNorm,Clinical Drug Comp,,10872
+132,Drug,RxNorm,Clinical Drug Form,S,14827
+133,Drug,RxNorm,Clinical Drug Form,,5946
+134,Drug,RxNorm,Clinical Pack,S,831
+135,Drug,RxNorm,Clinical Pack,,344
+136,Drug,RxNorm,Dose Form,,201
+137,Drug,RxNorm,Dose Form Group,C,46
+138,Drug,RxNorm,Dose Form Group,,1
+139,Drug,RxNorm,Ingredient,S,14300
+140,Drug,RxNorm,Ingredient,,1304
+141,Drug,RxNorm,Multiple Ingredients,,4469
+142,Drug,RxNorm,Precise Ingredient,,3476
+143,Drug,RxNorm,Quant Branded Drug,S,2707
+144,Drug,RxNorm,Quant Branded Drug,,508
+145,Drug,RxNorm,Quant Clinical Drug,S,3441
+146,Drug,RxNorm,Quant Clinical Drug,,419
+147,Drug,RxNorm Extension,Branded Drug,S,173889
+148,Drug,RxNorm Extension,Branded Drug,,21682
+149,Drug,RxNorm Extension,Branded Drug Box,S,216410
+150,Drug,RxNorm Extension,Branded Drug Box,,18239
+151,Drug,RxNorm Extension,Branded Drug Comp,S,146359
+152,Drug,RxNorm Extension,Branded Drug Comp,,19536
+153,Drug,RxNorm Extension,Branded Drug Form,S,120140
+154,Drug,RxNorm Extension,Branded Drug Form,,17879
+155,Drug,RxNorm Extension,Branded Pack,S,1804
+156,Drug,RxNorm Extension,Branded Pack,,335
+157,Drug,RxNorm Extension,Branded Pack Box,S,812
+158,Drug,RxNorm Extension,Branded Pack Box,,21
+159,Drug,RxNorm Extension,Brand Name,,90862
+160,Drug,RxNorm Extension,Clinical Drug,S,78830
+161,Drug,RxNorm Extension,Clinical Drug,,3042
+162,Drug,RxNorm Extension,Clinical Drug Box,S,114493
+163,Drug,RxNorm Extension,Clinical Drug Box,,1934
+164,Drug,RxNorm Extension,Clinical Drug Comp,S,67844
+165,Drug,RxNorm Extension,Clinical Drug Comp,,3093
+166,Drug,RxNorm Extension,Clinical Drug Form,S,35763
+167,Drug,RxNorm Extension,Clinical Drug Form,,1474
+168,Drug,RxNorm Extension,Clinical Pack,S,1486
+169,Drug,RxNorm Extension,Clinical Pack,,597
+170,Drug,RxNorm Extension,Clinical Pack Box,S,601
+171,Drug,RxNorm Extension,Clinical Pack Box,,652
+172,Drug,RxNorm Extension,Dose Form,,52
+173,Drug,RxNorm Extension,Ingredient,S,17397
+174,Drug,RxNorm Extension,Ingredient,,1379
+175,Drug,RxNorm Extension,Marketed Product,S,555513
+176,Drug,RxNorm Extension,Marketed Product,,46767
+177,Drug,RxNorm Extension,Quant Branded Box,S,85584
+178,Drug,RxNorm Extension,Quant Branded Box,,14826
+179,Drug,RxNorm Extension,Quant Branded Drug,S,97420
+180,Drug,RxNorm Extension,Quant Branded Drug,,14304
+181,Drug,RxNorm Extension,Quant Clinical Box,S,72884
+182,Drug,RxNorm Extension,Quant Clinical Box,,6922
+183,Drug,RxNorm Extension,Quant Clinical Drug,S,80268
+184,Drug,RxNorm Extension,Quant Clinical Drug,,5639
+185,Drug,RxNorm Extension,Supplier,,8593
+186,Drug,SNOMED,Clinical Drug,,9280
+187,Drug,SNOMED,Clinical Drug Form,,7570
+188,Drug,SNOMED,Context-dependent,,3447
+189,Drug,SNOMED,Dose Form,,552
+190,Drug,SNOMED,Pharma/Biol Product,,215383
+191,Drug,SNOMED,Qualifier Value,,478
+192,Drug,SNOMED,Substance,,17456
+193,Drug,SNOMED,Undefined,,1
+194,Drug,SPL,Animal Drug,C,351
+195,Drug,SPL,Cellular Therapy,C,117
+196,Drug,SPL,Ingredient,C,1257
+197,Drug,SPL,Ingredient,,4
+198,Drug,SPL,Non-Stand Allergenic,C,367
+199,Drug,SPL,Non-Stand Allergenic,,5
+200,Drug,SPL,OTC Drug,C,408147
+201,Drug,SPL,OTC Drug,,97
+202,Drug,SPL,Plasma Derivative,C,1196
+203,Drug,SPL,Plasma Derivative,,2
+204,Drug,SPL,Prescription Drug,C,291545
+205,Drug,SPL,Prescription Drug,,216
+206,Drug,SPL,SPL,,14673
+207,Drug,SPL,Standard Allergenic,C,194
+208,Drug,SPL,Standard Allergenic,,2
+209,Drug,SPL,Supplement,C,673
+210,Drug,SPL,Vaccine,C,1210
+211,Drug,SPL,Vaccine,,7
+212,Drug/Procedure,Read,Read,,5
+213,Episode,Episode,Disease Dynamic,S,5
+214,Episode,Episode,Disease Extent,S,3
+215,Episode,Episode,Disease Extent,,4
+216,Episode,Episode,Episode of Care,S,1
+217,Episode,Episode,Treatment,S,5
+218,Episode,NAACCR,NAACCR Variable,,8
+219,Ethnicity,Ethnicity,Ethnicity,S,2
+220,Gender,Gender,Gender,S,2
+221,Gender,Gender,Gender,,3
+222,Gender,Read,Read,,3
+223,Gender,SNOMED,Clinical Finding,,10
+224,Gender,UK Biobank,Value,,2
+225,Geography,OSM,10th level,S,62708
+226,Geography,OSM,11th level,S,1632
+227,Geography,OSM,12th level,S,165
+228,Geography,OSM,2nd level,S,19
+229,Geography,OSM,3rd level,S,28
+230,Geography,OSM,4th level,S,354
+231,Geography,OSM,5th level,S,567
+232,Geography,OSM,6th level,S,8572
+233,Geography,OSM,7th level,S,6574
+234,Geography,OSM,8th level,S,102089
+235,Geography,OSM,9th level,S,20631
+236,Geography,SNOMED,Location,S,229
+237,Geography,SNOMED,Location,,454
+238,Geography,US Census,US Census Division,S,9
+239,Geography,US Census,US Census Region,S,4
+240,Language,Language,Language,S,1
+241,Language,SNOMED,Qualifier Value,S,835
+242,Language,SNOMED,Qualifier Value,,39
+243,Meas/Procedure,Read,Read,,2
+244,Measurement,CO-CONNECT,Category,,4
+245,Measurement,CO-CONNECT,Lab Test,,25
+246,Measurement,CO-CONNECT,Precoordinated pair,,84
+247,Measurement,CO-CONNECT TWINS,Clinical Finding,,14
+248,Measurement,CO-CONNECT TWINS,Context-dependent,,2
+249,Measurement,CO-CONNECT TWINS,Lab Test,,6
+250,Measurement,CO-CONNECT TWINS,Observable Entity,,4
+251,Measurement,CO-CONNECT TWINS,Procedure,,423
+252,Measurement,HCPCS,HCPCS,S,69
+253,Measurement,HCPCS,HCPCS,,100
+254,Measurement,HCPCS,HCPCS Class,,7
+255,Measurement,HCPCS,HCPCS Modifier,S,8
+256,Measurement,ICD10,ICD10 code,,99
+257,Measurement,ICD10,ICD10 Hierarchy,,15
+258,Measurement,ICD10CM,3-char billing code,,2
+259,Measurement,ICD10CM,3-char nonbill code,,15
+260,Measurement,ICD10CM,4-char billing code,,67
+261,Measurement,ICD10CM,4-char nonbill code,,18
+262,Measurement,ICD10CM,5-char billing code,,39
+263,Measurement,ICD10CM,5-char nonbill code,,6
+264,Measurement,ICD10CM,6-char billing code,,19
+265,Measurement,ICD9CM,3-dig nonbill code,,2
+266,Measurement,ICD9CM,3-dig nonbill V code,,11
+267,Measurement,ICD9CM,4-dig billing code,,38
+268,Measurement,ICD9CM,4-dig billing V code,,68
+269,Measurement,ICD9CM,4-dig nonbill code,,10
+270,Measurement,ICD9CM,4-dig nonbill V code,,12
+271,Measurement,ICD9CM,5-dig billing code,,31
+272,Measurement,ICD9CM,5-dig billing V code,,36
+273,Measurement,LOINC,Clinical Observation,S,8862
+274,Measurement,LOINC,Clinical Observation,,458
+275,Measurement,LOINC,Lab Test,S,57298
+276,Measurement,LOINC,Lab Test,,3837
+277,Measurement,LOINC,LOINC Class,C,180
+278,Measurement,LOINC,LOINC Document Type,,1
+279,Measurement,LOINC,LOINC Group,C,6381
+280,Measurement,LOINC,LOINC Hierarchy,C,38791
+281,Measurement,LOINC,LOINC Hierarchy,,30394
+282,Measurement,NAACCR,NAACCR Variable,S,1279
+283,Measurement,NAACCR,NAACCR Variable,,171
+284,Measurement,OMOP Extension,Lab Test,S,130
+285,Measurement,OMOP Extension,Observable Entity,S,39
+286,Measurement,OMOP Extension,Precoordinated pair,S,285
+287,Measurement,OMOP Extension,Procedure,S,4
+288,Measurement,OMOP Extension,Social Context,S,1
+289,Measurement,OMOP Extension,Staging / Scales,S,343
+290,Measurement,OMOP Extension,Staging / Scales,,17
+291,Measurement,OMOP Genomic,Gene DNA Variant,S,62426
+292,Measurement,OMOP Genomic,Gene DNA Variant,,21034
+293,Measurement,OMOP Genomic,Gene Protein Variant,S,56068
+294,Measurement,OMOP Genomic,Gene Protein Variant,,33727
+295,Measurement,OMOP Genomic,Gene RNA Variant,S,63075
+296,Measurement,OMOP Genomic,Gene RNA Variant,,29913
+297,Measurement,OMOP Genomic,Genetic Variation,S,19292
+298,Measurement,OMOP Genomic,Gene Variant,S,1126
+299,Measurement,OMOP Genomic,Gene Variant,,2
+300,Measurement,OMOP Genomic,Structural Variant,S,3212
+301,Measurement,OMOP Genomic,Structural Variant,,14
+302,Measurement,OPCS4,Procedure,S,6
+303,Measurement,OPCS4,Procedure,,59
+304,Measurement,PPI,Clinical Observation,S,8
+305,Measurement,PPI,Clinical Observation,,25
+306,Measurement,Read,Read,,5825
+307,Measurement,SNOMED,Clinical Finding,S,960
+308,Measurement,SNOMED,Clinical Finding,,2263
+309,Measurement,SNOMED,Context-dependent,,2
+310,Measurement,SNOMED,Disorder,,8
+311,Measurement,SNOMED,Observable Entity,S,8365
+312,Measurement,SNOMED,Observable Entity,,5644
+313,Measurement,SNOMED,Procedure,S,11712
+314,Measurement,SNOMED,Procedure,,7098
+315,Measurement,SNOMED,Qualifier Value,,67
+316,Measurement,SNOMED,Staging / Scales,S,2216
+317,Measurement,SNOMED,Staging / Scales,,731
+318,Measurement,UK Biobank,Category,C,46
+319,Measurement,UK Biobank,Variable,,2679
+320,Meas Value,LOINC,Answer,S,19468
+321,Meas Value,LOINC,Answer,,235
+322,Meas Value,LOINC,Doc Kind,S,86
+323,Meas Value,LOINC,Doc Role,S,25
+324,Meas Value,LOINC,Doc Role,,5
+325,Meas Value,LOINC,Doc Setting,S,19
+326,Meas Value,LOINC,Doc Subject Matter,S,161
+327,Meas Value,LOINC,Doc Subject Matter,,4
+328,Meas Value,LOINC,Doc Type of Service,S,145
+329,Meas Value,LOINC,Doc Type of Service,,5
+330,Meas Value,NAACCR,NAACCR Value,S,20754
+331,Meas Value,NAACCR,NAACCR Value,,10286
+332,Meas Value,NAACCR,Permissible Range,,481
+333,Meas Value,OMOP Extension,Qualifier Value,S,2
+334,Meas Value,PPI,Answer,,167
+335,Meas Value,Read,Read,,23
+336,Meas Value,SNOMED,Observable Entity,,1
+337,Meas Value,SNOMED,Qualifier Value,S,3994
+338,Meas Value,SNOMED,Qualifier Value,,1037
+339,Meas Value,UK Biobank,Value,S,2
+340,Meas Value,UK Biobank,Value,,2
+341,Meas Value Operator,SNOMED,Qualifier Value,S,7
+342,Metadata,CDM,CDM,S,13
+343,Metadata,CDM,Field,S,991
+344,Metadata,CDM,Table,S,56
+345,Metadata,Concept Class,Concept Class,,423
+346,Metadata,Domain,Domain,,65
+347,Metadata,Metadata,Metadata,S,1
+348,Metadata,Metadata,Metadata,,1
+349,Metadata,NAACCR,NAACCR Variable,,13
+350,Metadata,None,Undefined,,1
+351,Metadata,Relationship,Relationship,,704
+352,Metadata,SNOMED,Context-dependent,,3
+353,Metadata,SNOMED,Inactive Concept,,13
+354,Metadata,SNOMED,Model Comp,,1017
+355,Metadata,SNOMED,Namespace Concept,,312
+356,Metadata,SNOMED,Navi Concept,,978
+357,Metadata,SNOMED,Pharma/Biol Product,,1
+358,Metadata,SNOMED,Special Concept,,31
+359,Metadata,SNOMED,Substance,,1
+360,Metadata,Vocabulary,Vocabulary,,148
+361,Note,LOINC,Clinical Observation,S,3581
+362,Note,LOINC,Clinical Observation,,35
+363,Note,LOINC,LOINC Hierarchy,C,455
+364,Observation,CO-CONNECT,Clinical Finding,,50
+365,Observation,CO-CONNECT,Clinical Observation,,8
+366,Observation,CO-CONNECT,Context-dependent,,1
+367,Observation,CO-CONNECT,Event,,13
+368,Observation,CO-CONNECT,Organism,,24
+369,Observation,CO-CONNECT,Procedure,,1
+370,Observation,CO-CONNECT,Race,,26
+371,Observation,CO-CONNECT TWINS,Clinical Finding,,2550
+372,Observation,CO-CONNECT TWINS,Context-dependent,,165
+373,Observation,CO-CONNECT TWINS,Event,,27
+374,Observation,CO-CONNECT TWINS,Observable Entity,,78
+375,Observation,CO-CONNECT TWINS,Procedure,,593
+376,Observation,CO-CONNECT TWINS,Race,,13
+377,Observation,HCPCS,HCPCS,S,2019
+378,Observation,HCPCS,HCPCS,,933
+379,Observation,HCPCS,HCPCS Class,,22
+380,Observation,HCPCS,HCPCS Modifier,S,332
+381,Observation,HES Specialty,Observation,,5
+382,Observation,ICD10,ICD10 Chapter,,22
+383,Observation,ICD10,ICD10 code,,1753
+384,Observation,ICD10,ICD10 Hierarchy,,452
+385,Observation,ICD10CM,3-char billing code,,12
+386,Observation,ICD10CM,3-char nonbill code,,351
+387,Observation,ICD10CM,4-char billing code,,552
+388,Observation,ICD10CM,4-char nonbill code,,1346
+389,Observation,ICD10CM,5-char billing code,,700
+390,Observation,ICD10CM,5-char nonbill code,,1186
+391,Observation,ICD10CM,6-char billing code,,741
+392,Observation,ICD10CM,6-char nonbill code,,639
+393,Observation,ICD10CM,7-char billing code,,5127
+394,Observation,ICD9CM,3-dig billing code,,2
+395,Observation,ICD9CM,3-dig billing E code,,23
+396,Observation,ICD9CM,3-dig nonbill code,,16
+397,Observation,ICD9CM,3-dig nonbill E code,,126
+398,Observation,ICD9CM,3-dig nonbill V code,,50
+399,Observation,ICD9CM,4-dig billing code,,96
+400,Observation,ICD9CM,4-dig billing E code,,663
+401,Observation,ICD9CM,4-dig billing V code,,251
+402,Observation,ICD9CM,4-dig nonbill code,,40
+403,Observation,ICD9CM,4-dig nonbill V code,,99
+404,Observation,ICD9CM,5-dig billing code,,159
+405,Observation,ICD9CM,5-dig billing V code,,445
+406,Observation,ICD9CM,ICD9CM code,,9
+407,Observation,LOINC,Claims Attachment,S,499
+408,Observation,LOINC,Claims Attachment,,658
+409,Observation,LOINC,Clinical Observation,S,7166
+410,Observation,LOINC,Clinical Observation,,93
+411,Observation,LOINC,Lab Test,S,7
+412,Observation,LOINC,Lab Test,,1
+413,Observation,LOINC,LOINC Class,C,121
+414,Observation,LOINC,LOINC Component,,60756
+415,Observation,LOINC,LOINC Hierarchy,C,1075
+416,Observation,LOINC,LOINC Hierarchy,,1525
+417,Observation,LOINC,LOINC Method,,2084
+418,Observation,LOINC,LOINC Property,,218
+419,Observation,LOINC,LOINC Scale,,12
+420,Observation,LOINC,LOINC System,,2940
+421,Observation,LOINC,LOINC Time,,98
+422,Observation,LOINC,Survey,S,11676
+423,Observation,LOINC,Survey,,496
+424,Observation,NAACCR,NAACCR Procedure,S,57
+425,Observation,NAACCR,NAACCR Procedure,,28
+426,Observation,NAACCR,NAACCR Proc Schema,,30
+427,Observation,NAACCR,NAACCR Schema,,195
+428,Observation,NAACCR,NAACCR Value,S,36
+429,Observation,NAACCR,NAACCR Value,,2
+430,Observation,NAACCR,NAACCR Variable,S,3
+431,Observation,NAACCR,NAACCR Variable,,407
+432,Observation,NUCC,Observation,S,4
+433,Observation,OMOP Extension,Attribute,S,1
+434,Observation,OMOP Extension,Clinical Finding,S,57
+435,Observation,OMOP Extension,Clinical Finding,,1
+436,Observation,OMOP Extension,Context-dependent,S,61
+437,Observation,OMOP Extension,Context-dependent,,44
+438,Observation,OMOP Extension,Event,S,20
+439,Observation,OMOP Extension,Observable Entity,S,14
+440,Observation,OMOP Extension,Procedure,S,10
+441,Observation,OMOP Extension,Qualifier Value,S,8
+442,Observation,OMOP Extension,Substance,S,14
+443,Observation,OPCS4,Attribute,S,1
+444,Observation,OPCS4,Attribute,,4
+445,Observation,OPCS4,Clinical Finding,,1
+446,Observation,OPCS4,Context-dependent,,2
+447,Observation,OPCS4,Morph Abnormality,S,1
+448,Observation,OPCS4,Observable Entity,,1
+449,Observation,OPCS4,Procedure,S,31
+450,Observation,OPCS4,Procedure,,134
+451,Observation,OPCS4,Qualifier Value,S,23
+452,Observation,OPCS4,Qualifier Value,,83
+453,Observation,OPCS4,Social Context,,3
+454,Observation,OPCS4,Substance,,1
+455,Observation,PPI,Answer,S,680
+456,Observation,PPI,Answer,,3702
+457,Observation,PPI,Clinical Observation,S,1
+458,Observation,PPI,Module,S,23
+459,Observation,PPI,Module,,1
+460,Observation,PPI,PPI Modifier,S,6
+461,Observation,PPI,Qualifier Value,S,11
+462,Observation,PPI,Qualifier Value,,21
+463,Observation,PPI,Question,S,1584
+464,Observation,PPI,Question,,340
+465,Observation,PPI,Question source,S,18
+466,Observation,PPI,Question source,,12
+467,Observation,PPI,Topic,S,85
+468,Observation,PPI,Topic,,38
+469,Observation,Read,Read,,30658
+470,Observation,SNOMED,Attribute,,1325
+471,Observation,SNOMED,Biological Function,,2
+472,Observation,SNOMED,Clinical Finding,S,26720
+473,Observation,SNOMED,Clinical Finding,,17243
+474,Observation,SNOMED,Context-dependent,S,4230
+475,Observation,SNOMED,Context-dependent,,72230
+476,Observation,SNOMED,Disorder,S,2052
+477,Observation,SNOMED,Disorder,,1428
+478,Observation,SNOMED,Disposition,S,377
+479,Observation,SNOMED,Disposition,,26
+480,Observation,SNOMED,Event,S,3444
+481,Observation,SNOMED,Event,,10918
+482,Observation,SNOMED,Location,,1513
+483,Observation,SNOMED,Morph Abnormality,S,5009
+484,Observation,SNOMED,Morph Abnormality,,1937
+485,Observation,SNOMED,Observable Entity,S,7585
+486,Observation,SNOMED,Observable Entity,,1057
+487,Observation,SNOMED,Organism,S,33948
+488,Observation,SNOMED,Organism,,7775
+489,Observation,SNOMED,Patient Status,,1
+490,Observation,SNOMED,Pharma/Biol Product,,73
+491,Observation,SNOMED,Physical Force,,181
+492,Observation,SNOMED,Physical Object,,709
+493,Observation,SNOMED,Procedure,S,8321
+494,Observation,SNOMED,Procedure,,2503
+495,Observation,SNOMED,Qualifier Value,S,5223
+496,Observation,SNOMED,Qualifier Value,,10059
+497,Observation,SNOMED,Social Context,S,3878
+498,Observation,SNOMED,Social Context,,3782
+499,Observation,SNOMED,Substance,S,11023
+500,Observation,SNOMED,Substance,,4394
+501,Observation,SNOMED,Undefined,,23516
+502,Observation,SPL,Cosmetic,C,121
+503,Observation,SPL,Food,C,21
+504,Observation,UB04 Pri Typ of Adm,UB04 Pri Typ of Adm,S,6
+505,Observation,UB04 Typ bill,Observation,,19
+506,Observation,UK Biobank,Answer,S,1156
+507,Observation,UK Biobank,Answer,,1279
+508,Observation,UK Biobank,Category,C,246
+509,Observation,UK Biobank,Precoordinated pair,,1257
+510,Observation,UK Biobank,Question,S,949
+511,Observation,UK Biobank,Question,,174
+512,Observation,UK Biobank,Value,S,1293
+513,Observation,UK Biobank,Value,,9051
+514,Observation,UK Biobank,Variable,S,434
+515,Observation,UK Biobank,Variable,,767
+516,Obs/Procedure,Read,Read,,76
+517,Payer,SOPT,Payer,S,162
+518,Payer,SOPT,Payer,,6
+519,Plan,Plan,Benefit,S,6
+520,Plan,Plan,Metal level,S,5
+521,Plan Stop Reason,Plan Stop Reason,Plan Stop Reason,S,13
+522,Procedure,HCPCS,HCPCS,S,566
+523,Procedure,HCPCS,HCPCS,,696
+524,Procedure,HCPCS,HCPCS Class,,62
+525,Procedure,HCPCS,HCPCS Modifier,S,2
+526,Procedure,ICD10,ICD10 code,,170
+527,Procedure,ICD10,ICD10 Hierarchy,,28
+528,Procedure,ICD10CM,3-char billing code,,5
+529,Procedure,ICD10CM,3-char nonbill code,,4
+530,Procedure,ICD10CM,4-char billing code,,23
+531,Procedure,ICD10CM,4-char nonbill code,,9
+532,Procedure,ICD10CM,5-char billing code,,28
+533,Procedure,ICD10CM,5-char nonbill code,,4
+534,Procedure,ICD10CM,6-char billing code,,15
+535,Procedure,ICD10PCS,ICD10PCS,S,81575
+536,Procedure,ICD10PCS,ICD10PCS Hierarchy,S,114470
+537,Procedure,ICD10PCS,ICD10PCS Hierarchy,,3
+538,Procedure,ICD9CM,3-dig nonbill code,,2
+539,Procedure,ICD9CM,3-dig nonbill V code,,13
+540,Procedure,ICD9CM,4-dig billing code,,9
+541,Procedure,ICD9CM,4-dig billing V code,,78
+542,Procedure,ICD9CM,4-dig nonbill code,,8
+543,Procedure,ICD9CM,4-dig nonbill V code,,23
+544,Procedure,ICD9CM,5-dig billing code,,23
+545,Procedure,ICD9CM,5-dig billing V code,,72
+546,Procedure,ICD9Proc,2-dig nonbill code,S,55
+547,Procedure,ICD9Proc,2-dig nonbill code,,45
+548,Procedure,ICD9Proc,3-dig billing code,S,60
+549,Procedure,ICD9Proc,3-dig billing code,,161
+550,Procedure,ICD9Proc,3-dig nonbill code,S,378
+551,Procedure,ICD9Proc,3-dig nonbill code,,291
+552,Procedure,ICD9Proc,4-dig billing code,S,1725
+553,Procedure,ICD9Proc,4-dig billing code,,1936
+554,Procedure,ICD9Proc,Procedure,S,5
+555,Procedure,ICD9Proc,Procedure,,1
+556,Procedure,LOINC,Clinical Observation,S,6588
+557,Procedure,LOINC,Clinical Observation,,379
+558,Procedure,LOINC,LOINC Group,C,695
+559,Procedure,LOINC,LOINC Hierarchy,C,2039
+560,Procedure,NAACCR,NAACCR Procedure,S,622
+561,Procedure,NAACCR,NAACCR Value,S,56
+562,Procedure,NAACCR,NAACCR Value,,32
+563,Procedure,OMOP Extension,Procedure,S,21
+564,Procedure,OPCS4,Procedure,S,2139
+565,Procedure,OPCS4,Procedure,,7611
+566,Procedure,Read,Read,,20777
+567,Procedure,SNOMED,Context-dependent,,11
+568,Procedure,SNOMED,Procedure,S,48467
+569,Procedure,SNOMED,Procedure,,34807
+570,Provider,ABMS,Physician Specialty,S,85
+571,Provider,ABMS,Physician Specialty,,13
+572,Provider,HES Specialty,Physician Specialty,S,53
+573,Provider,HES Specialty,Physician Specialty,,95
+574,Provider,HES Specialty,Provider,S,1
+575,Provider,HES Specialty,Provider,,4
+576,Provider,Medicare Specialty,Physician Specialty,S,65
+577,Provider,Medicare Specialty,Physician Specialty,,2
+578,Provider,Medicare Specialty,Provider,S,22
+579,Provider,NUCC,Physician Specialty,S,113
+580,Provider,NUCC,Physician Specialty,,124
+581,Provider,NUCC,Provider,S,396
+582,Provider,NUCC,Provider,,34
+583,Provider,Read,Read,,124
+584,Provider,SNOMED,Social Context,,698
+585,Race,Race,Race,S,50
+586,Race,Race,Race,,3
+587,Race,Read,Read,,258
+588,Race,SNOMED,Clinical Finding,,153
+589,Race,SNOMED,Social Context,,365
+590,Relationship,Read,Read,,66
+591,Relationship,Relationship,Relationship,S,14
+592,Relationship,SNOMED,Linkage Assertion,S,9
+593,Relationship,SNOMED,Linkage Assertion,,8
+594,Relationship,SNOMED,Linkage Concept,S,1
+595,Relationship,SNOMED,Social Context,S,185
+596,Relationship,SNOMED,Social Context,,201
+597,Revenue Code,Korean Revenue Code,Revenue Code,S,7
+598,Revenue Code,Revenue Code,Revenue Code,S,538
+599,Route,SNOMED,Context-dependent,,6
+600,Route,SNOMED,Qualifier Value,S,166
+601,Route,SNOMED,Qualifier Value,,45
+602,Spec Anatomic Site,OPCS4,Body Structure,S,170
+603,Spec Anatomic Site,OPCS4,Body Structure,,712
+604,Spec Anatomic Site,Read,Read,,1885
+605,Spec Anatomic Site,SNOMED,Body Structure,S,36300
+606,Spec Anatomic Site,SNOMED,Body Structure,,3847
+607,Spec Anatomic Site,SNOMED,Pharma/Biol Product,,1
+608,Specimen,CO-CONNECT MIABIS,Body Structure,,3
+609,Specimen,CO-CONNECT MIABIS,Specimen,,57
+610,Specimen,OMOP Extension,Specimen,S,2
+611,Specimen,OPCS4,Specimen,,1
+612,Specimen,Read,Read,,54
+613,Specimen,SNOMED,Specimen,S,1868
+614,Specimen,SNOMED,Specimen,,192
+615,Sponsor,Sponsor,Sponsor,S,6
+616,Type Concept,Condition Type,Condition Type,,104
+617,Type Concept,Condition Type,Death Type,,14
+618,Type Concept,Cost Type,Cost Type,,8
+619,Type Concept,Death Type,Death Type,,14
+620,Type Concept,Device Type,Device Type,,4
+621,Type Concept,Drug Type,Drug Type,,16
+622,Type Concept,Meas Type,Meas Type,,12
+623,Type Concept,Note Type,Note Type,,10
+624,Type Concept,Observation Type,Death Type,,14
+625,Type Concept,Observation Type,Observation Type,,15
+626,Type Concept,Obs Period Type,Obs Period Type,,6
+627,Type Concept,Procedure Type,Procedure Type,,97
+628,Type Concept,Read,Read,,574
+629,Type Concept,SNOMED,Admin Concept,,1118
+630,Type Concept,SNOMED,Record Artifact,,2227
+631,Type Concept,SNOMED,Undefined,,1
+632,Type Concept,Specimen Type,Specimen Type,,1
+633,Type Concept,Type Concept,Type Concept,S,80
+634,Type Concept,Visit Type,Visit Type,,18
+635,Unit,Read,Read,,1
+636,Unit,SNOMED,Qualifier Value,,1358
+637,Unit,UCUM,Canonical Unit,S,35
+638,Unit,UCUM,Unit,S,996
+639,Unit,UCUM,Unit,,89
+640,Visit,CMS Place of Service,Visit,S,51
+641,Visit,CMS Place of Service,Visit,,9
+642,Visit,HES Specialty,Visit,S,3
+643,Visit,HES Specialty,Visit,,4
+644,Visit,Medicare Specialty,Visit,S,25
+645,Visit,Medicare Specialty,Visit,,6
+646,Visit,NUCC,Visit,S,161
+647,Visit,NUCC,Visit,,23
+648,Visit,Read,Read,,65
+649,Visit,SNOMED,Location,,63
+650,Visit,UB04 Point of Origin,UB04 Point of Origin,,23
+651,Visit,UB04 Pt dis status,UB04 Pt dis status,,55
+652,Visit,UB04 Typ bill,Visit,S,4
+653,Visit,UB04 Typ bill,Visit,,275
+654,Visit,Visit,Visit,S,19

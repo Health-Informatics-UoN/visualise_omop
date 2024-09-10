@@ -3,69 +3,233 @@ toc: false
 ---
 
 <div class="hero">
-  <h1>Visualise OMOP</h1>
-  <h2>Welcome to your new app! Edit&nbsp;<code style="font-size: 90%;">src/index.md</code> to change this page.</h2>
-  <a href="https://observablehq.com/framework/getting-started">Get started<span style="display: inline-block; margin-left: 0.25rem;">↗︎</span></a>
+  <h1>Visualising OMOP</h1> 
 </div>
 
-<div class="grid grid-cols-2" style="grid-auto-rows: 504px;">
-  <div class="card">${
-    resize((width) => Plot.plot({
-      title: "Your awesomeness over time 🚀",
-      subtitle: "Up and to the right!",
-      width,
-      y: {grid: true, label: "Awesomeness"},
-      marks: [
-        Plot.ruleY([0]),
-        Plot.lineY(aapl, {x: "Date", y: "Close", tip: true})
-      ]
-    }))
-  }</div>
-  <div class="card">${
-    resize((width) => Plot.plot({
-      title: "How big are penguins, anyway? 🐧",
-      width,
-      grid: true,
-      x: {label: "Body mass (g)"},
-      y: {label: "Flipper length (mm)"},
-      color: {legend: true},
-      marks: [
-        Plot.linearRegressionY(penguins, {x: "body_mass_g", y: "flipper_length_mm", stroke: "species"}),
-        Plot.dot(penguins, {x: "body_mass_g", y: "flipper_length_mm", stroke: "species", tip: true})
-      ]
-    }))
-  }</div>
-</div>
+It's hard to get an idea of what the structure of the OMOP vocabularies are, so here's a nice interactive treemap to help.
+I've split the database in a slightly artificial hierarchy that runs:
 
+1. Domain
+2. Vocabulary
+3. Concept class
+4. Standard/Non-standard/Classification concept
+
+I know that vocabularies can contain concepts with several domains, but a treemap needs a hierarchy, and this is the best way to split things by my conception of the database.
+
+Click on it! When you click, it expands the box you've selected! To go back up a level, click the white bar at the top.
+  
+```js
+const concepts = FileAttachment("./data/all_concepts.csv").csv();
+```
+
+```js
+const concept_hierarchy = concepts.reduce((acc, row) => {
+    const existing_domain = acc.find(element => element.name == row.domain_id);
+    if (existing_domain) {
+        const existing_vocab = existing_domain["children"].find(element => element.name == row.vocabulary_id);
+        if(existing_vocab) {
+            const existing_concept_class = existing_vocab["children"].find(element => element.name == row.concept_class_id);
+            if (existing_concept_class) {
+                existing_concept_class["children"].push({
+                    "name": row.standard_concept === "S" ? "Standard concept": row.standard_concept === "C" ? "Classification": "Non-standard concept",
+                    "value": row.count
+                })
+            } else {
+                existing_vocab["children"].push({
+                    "name": row.concept_class_id,
+                    "children": [
+                        {
+                            "name": row.standard_concept === "S" ? "Standard concept": row.standard_concept === "C" ? "Classification": "Non-standard concept",
+                            "value": row.count
+                        }
+
+                    ]
+                })
+            }
+        } else {
+            existing_domain["children"].push({
+                "name": row.vocabulary_id,
+                "children": [
+                    {
+                        "name": row.concept_class_id,
+                        "children": [
+                            {
+                                "name": row.standard_concept === "S" ? "Standard concept": row.standard_concept === "C" ? "Classification": "Non-standard concept",
+                                "value": row.count
+                            }
+                        ]
+                    }
+                ]
+            })
+        }
+    } else {
+        acc.push({
+            "name": row.domain_id,
+            "children": [
+                {
+                    "name": row.vocabulary_id,
+                    "children": [
+                        {
+                            "name": row.concept_class_id,
+                            "children": [
+                                {
+                                    "name": row.standard_concept === "S" ? "Standard concept" : row.standard_concept === "C" ? "Classification" : "Non-standard concept",
+                                    "value": row.count
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        })
+    }
+    return acc
+    }, [])
+```
+
+```js
+  // I took this pretty much whole from https://observablehq.com/@d3/zoomable-treemap
+  // Specify the chart’s dimensions.
+  const width = 900;
+  const height = 600;
+
+  // This custom tiling function adapts the built-in binary tiling function
+  // for the appropriate aspect ratio when the treemap is zoomed-in.
+  function tile(node, x0, y0, x1, y1) {
+    d3.treemapBinary(node, 0, 0, width, height);
+    for (const child of node.children) {
+      child.x0 = x0 + child.x0 / width * (x1 - x0);
+      child.x1 = x0 + child.x1 / width * (x1 - x0);
+      child.y0 = y0 + child.y0 / height * (y1 - y0);
+      child.y1 = y0 + child.y1 / height * (y1 - y0);
+    }
+  }
+  var count = 0;
+  
+  function Id(id) {
+    this.id = id;
+    this.href = new URL(`#${id}`, location) + "";
+  }
+
+  Id.prototype.toString = function() {
+    return "url(" + this.href + ")";
+  };
+
+  function uid(name) {
+    return new Id("O-" + (name == null ? "" : name + "-") + ++count);
+  }
+
+  // Compute the layout.
+  const hierarchy = d3.hierarchy({
+      "name": "OMOP",
+      "children": concept_hierarchy
+  })
+    .sum(d => d.value)
+    .sort((a, b) => b.value - a.value);
+  const root = d3.treemap().tile(tile)(hierarchy);
+
+  // Create the scales.
+  const x = d3.scaleLinear().rangeRound([0, width]);
+  const y = d3.scaleLinear().rangeRound([0, height]);
+
+  // Formatting utilities.
+  const format = d3.format(",d");
+  const name = d => d.ancestors().reverse().map(d => d.data.name).join("/");
+
+  // Create the SVG container.
+  const svg = d3.create("svg")
+      .attr("viewBox", [0.5, -30.5, width, height + 30])
+      .attr("width", width)
+      .attr("height", height + 30)
+      .attr("style", "max-width: 100%; height: auto;")
+      .style("font", "10px sans-serif");
+
+  // Display the root.
+  let group = svg.append("g")
+      .call(render, root);
+
+  function render(group, root) {
+    const node = group
+      .selectAll("g")
+      .data(root.children.concat(root))
+      .join("g");
+
+    node.filter(d => d === root ? d.parent : d.children)
+        .attr("cursor", "pointer")
+        .on("click", (event, d) => d === root ? zoomout(root) : zoomin(d));
+
+    node.append("title")
+        .text(d => `${name(d)}\n${format(d.value)}`);
+
+    node.append("rect")
+        .attr("id", d => (d.leafUid = uid("leaf")).id)
+        .attr("fill", d => d === root ? "#fff" : d.children ? "#ccc" : "#ddd")
+        .attr("stroke", "#fff");
+
+    node.append("clipPath")
+        .attr("id", d => (d.clipUid = uid("clip")).id)
+      .append("use")
+        .attr("xlink:href", d => d.leafUid.href);
+
+    node.append("text")
+        .attr("clip-path", d => d.clipUid)
+        .attr("font-weight", d => d === root ? "bold" : null)
+      .selectAll("tspan")
+      .data(d => (d === root ? name(d) : d.data.name).split(/(?=[A-Z][^A-Z])/g).concat(format(d.value)))
+      .join("tspan")
+        .attr("x", 5)
+        .attr("y", (d, i, nodes) => `${(i === nodes.length - 1) * 0.3 + 1.1 + i * 0.7}em`)
+        .attr("fill-opacity", (d, i, nodes) => i === nodes.length - 1 ? 0.7 : null)
+        .attr("font-weight", (d, i, nodes) => i === nodes.length - 1 ? "normal" : null)
+        .text(d => d);
+
+    group.call(position, root);
+  }
+
+  function position(group, root) {
+    group.selectAll("g")
+        .attr("transform", d => d === root ? `translate(0,-30)` : `translate(${x(d.x0)},${y(d.y0)})`)
+      .select("rect")
+        .attr("width", d => d === root ? width : x(d.x1) - x(d.x0))
+        .attr("height", d => d === root ? 30 : y(d.y1) - y(d.y0));
+  }
+
+  // When zooming in, draw the new nodes on top, and fade them in.
+  function zoomin(d) {
+    const group0 = group.attr("pointer-events", "none");
+    const group1 = group = svg.append("g").call(render, d);
+
+    x.domain([d.x0, d.x1]);
+    y.domain([d.y0, d.y1]);
+
+    svg.transition()
+        .duration(750)
+        .call(t => group0.transition(t).remove()
+          .call(position, d.parent))
+        .call(t => group1.transition(t)
+          .attrTween("opacity", () => d3.interpolate(0, 1))
+          .call(position, d));
+  }
+
+  // When zooming out, draw the old nodes on top, and fade them out.
+  function zoomout(d) {
+    const group0 = group.attr("pointer-events", "none");
+    const group1 = group = svg.insert("g", "*").call(render, d.parent);
+
+    x.domain([d.parent.x0, d.parent.x1]);
+    y.domain([d.parent.y0, d.parent.y1]);
+
+    svg.transition()
+        .duration(750)
+        .call(t => group0.transition(t).remove()
+          .attrTween("opacity", () => d3.interpolate(1, 0))
+          .call(position, d))
+        .call(t => group1.transition(t)
+          .call(position, d.parent));
+  }
+  const concept_treemap = display(svg.node());
+```
 ---
-
-## Next steps
-
-Here are some ideas of things you could try…
-
-<div class="grid grid-cols-4">
-  <div class="card">
-    Chart your own data using <a href="https://observablehq.com/framework/lib/plot"><code>Plot</code></a> and <a href="https://observablehq.com/framework/files"><code>FileAttachment</code></a>. Make it responsive using <a href="https://observablehq.com/framework/javascript#resize(render)"><code>resize</code></a>.
-  </div>
-  <div class="card">
-    Create a <a href="https://observablehq.com/framework/project-structure">new page</a> by adding a Markdown file (<code>whatever.md</code>) to the <code>src</code> folder.
-  </div>
-  <div class="card">
-    Add a drop-down menu using <a href="https://observablehq.com/framework/inputs/select"><code>Inputs.select</code></a> and use it to filter the data shown in a chart.
-  </div>
-  <div class="card">
-    Write a <a href="https://observablehq.com/framework/loaders">data loader</a> that queries a local database or API, generating a data snapshot on build.
-  </div>
-  <div class="card">
-    Import a <a href="https://observablehq.com/framework/imports">recommended library</a> from npm, such as <a href="https://observablehq.com/framework/lib/leaflet">Leaflet</a>, <a href="https://observablehq.com/framework/lib/dot">GraphViz</a>, <a href="https://observablehq.com/framework/lib/tex">TeX</a>, or <a href="https://observablehq.com/framework/lib/duckdb">DuckDB</a>.
-  </div>
-  <div class="card">
-    Ask for help, or share your work or ideas, on the <a href="https://talk.observablehq.com/">Observable forum</a>.
-  </div>
-  <div class="card">
-    Visit <a href="https://github.com/observablehq/framework">Framework on GitHub</a> and give us a star. Or file an issue if you’ve found a bug!
-  </div>
-</div>
 
 <style>
 
