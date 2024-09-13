@@ -206,16 +206,120 @@ const heatmap_rels = d3.rollups(relationships_filtered_for_bar,
     );
 ```
 
-```js
-display(heatmap_rels)
-```
+That's a nice little summary of the overall counts. What are the domains being mapped to and from?
+
+Below is a heatmap for this. It's filtered on the same domains as the bar chart.
 
 ```js
-const heatmap = d3.create("svg")
-                  .attr("width", 640)
-                  .attr("height", 640)
-                  .append("g")
-                  .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+const width = 640;
+const height = 640;
 
-const hm_from_domains = d3.map(relationships_filtered_for_bar, (d) => )
+const hm_from_domains = Array.from(new Set(heatmap_rels.map(d => d.from_domain)));
+const hm_to_domains = Array.from(new Set(heatmap_rels.map(d => d.to_domain)));
+
+const margin = {
+    top: 60,
+    right: 30,
+    bottom: Math.max(...(hm_to_domains.map(el => el.length)))*4,
+    left: Math.max(...(hm_from_domains.map(el => el.length)))*6
+};
+
+const svg = d3.create("svg")
+    .attr("width", width)
+    .attr("height", height)
+    .attr("viewBox", [0, 0, width, height])
+    .attr("style", "max-width: 100%; height: auto;");
+
+const g = svg.append("g")
+    .attr("transform", `translate(${margin.left},${margin.top})`);
+
+const hm_x = d3.scaleBand()
+    .range([0, width - margin.left - margin.right])
+    .domain(hm_from_domains)
+    .padding(0.05);
+
+g.append("g")
+    .attr("transform", `translate(0,${height - margin.top - margin.bottom})`)
+    .call(d3.axisBottom(hm_x))
+    .selectAll("text")
+    .attr("transform", "rotate(-45)")
+    .style("text-anchor", "end");
+
+const hm_y = d3.scaleBand()
+    .range([height - margin.top - margin.bottom, 0])
+    .domain(hm_to_domains)
+    .padding(0.05);
+
+g.append("g")
+    .call(d3.axisLeft(hm_y));
+
+// Build color scale
+const myColor = d3.scaleSequential()
+    .interpolator(d3.interpolateYlOrRd)
+    .domain([0, d3.max(heatmap_rels, d => d.count)]);
+
+// Create a tooltip
+const tooltip = d3.select(document.createElement("div"))
+    .style("opacity", 0)
+    .attr("class", "tooltip")
+    .style("background-color", "white")
+    .style("border", "solid")
+    .style("border-width", "2px")
+    .style("border-radius", "5px")
+    .style("padding", "5px")
+    .style("position", "absolute");
+
+document.body.appendChild(tooltip.node());
+
+// Three functions that change the tooltip when users hover / move / leave a cell
+const mouseover = function(event, d) {
+    tooltip.style("opacity", 1);
+    d3.select(this)
+        .style("stroke", "black")
+        .style("opacity", 1);
+}
+
+const mousemove = function(event, d) {
+    tooltip.html(`From: ${d.from_domain}<br>To: ${d.to_domain}<br>Count: ${d.count}`)
+        .style("left", (event.pageX + 10) + "px")
+        .style("top", (event.pageY - 10) + "px")
+        .style("color", "black");
+}
+
+const mouseleave = function(event, d) {
+    tooltip.style("opacity", 0);
+    d3.select(this)
+        .style("stroke", "none")
+        .style("opacity", 0.8);
+}
+
+// Add the squares
+g.selectAll()
+    .data(heatmap_rels)
+    .enter()
+    .append("rect")
+        .attr("x", d => hm_x(d.from_domain))
+        .attr("y", d => hm_y(d.to_domain))
+        .attr("rx", 4)
+        .attr("ry", 4)
+        .attr("width", hm_x.bandwidth())
+        .attr("height", hm_y.bandwidth())
+        .style("fill", d => myColor(d.count))
+        .style("stroke-width", 4)
+        .style("stroke", "none")
+        .style("opacity", 0.8)
+    .on("mouseover", mouseover)
+    .on("mousemove", mousemove)
+    .on("mouseleave", mouseleave);
+
+// Add title to graph
+svg.append("text")
+    .attr("x", width / 2)
+    .attr("y", margin.top / 2)
+    .attr("text-anchor", "middle")
+    .style("font-size", "22px")
+    .style("stroke", "#FFFFFF")
+    .text("Heatmap of Domain Relationships");
+
+display(svg.node());
 ```
