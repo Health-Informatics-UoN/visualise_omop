@@ -220,8 +220,8 @@ const hm_to_domains = Array.from(new Set(heatmap_rels.map(d => d.to_domain)));
 const margin = {
     top: 60,
     right: 30,
-    bottom: Math.max(...(hm_to_domains.map(el => el.length)))*4,
-    left: Math.max(...(hm_from_domains.map(el => el.length)))*6
+    bottom: Math.max(...(hm_from_domains.map(el => el.length)))*6,
+    left: Math.max(...(hm_to_domains.map(el => el.length)))*6
 };
 
 const svg = d3.create("svg")
@@ -323,3 +323,5 @@ svg.append("text")
 
 display(svg.node());
 ```
+
+I'm sorry choosing domains is a pain.
