@@ -255,7 +255,7 @@ g.append("g")
 
 // Build color scale
 const myColor = d3.scaleSequential()
-    .interpolator(d3.interpolateYlOrRd)
+    .interpolator(d3.interpolateRgbBasis(["purple", "green"]))
     .domain([0, d3.max(heatmap_rels, d => d.count)]);
 
 // Create a tooltip
@@ -436,3 +436,8 @@ const label = svg.append("g")
 display(svg.node());
 ```
 
+I had thought to show more domains on the left, but that would be too chaotic.
+
+<!--
+TODO: There are a few million relationships in OMOP's relationships table. It wouldn't be unfeasible to visualise this as a graph. It would be a bit big, but maybe?
+-->
