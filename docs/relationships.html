@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="generator" content="Observable Framework v1.11.0">
+<title>OMOP concept relationships | Visualise OMOP</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,200..900;1,8..60,200..900&amp;display=swap" crossorigin>
+<link rel="preload" as="style" href="./_observablehq/theme-parchment.bf6a547e.css">
+<link rel="preload" as="style" href="./_observablehq/stdlib/inputs.ea9fd553.css">
+<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,200..900;1,8..60,200..900&amp;display=swap" crossorigin>
+<link rel="stylesheet" type="text/css" href="./_observablehq/theme-parchment.bf6a547e.css">
+<link rel="stylesheet" type="text/css" href="./_observablehq/stdlib/inputs.ea9fd553.css">
+<link rel="modulepreload" href="./_observablehq/client.d91634ff.js">
+<link rel="modulepreload" href="./_observablehq/runtime.62b61640.js">
+<link rel="modulepreload" href="./_observablehq/stdlib.10504731.js">
+<link rel="modulepreload" href="./_npm/d3-sankey@0.12.3/4a69e793.js">
+<link rel="modulepreload" href="./_npm/d3-dsv@3.0.1/407f7a1f.js">
+<link rel="modulepreload" href="./_npm/d3@7.9.0/7055d4c5.js">
+<link rel="modulepreload" href="./_npm/htl@0.3.1/063eb405.js">
+<link rel="modulepreload" href="./_observablehq/stdlib/inputs.470d1590.js">
+<link rel="modulepreload" href="./_npm/@observablehq/plot@0.6.16/e828d8c8.js">
+<link rel="modulepreload" href="./_npm/isoformat@0.2.1/c68fbd73.js">
+<link rel="modulepreload" href="./_npm/d3-array@2.12.1/25a596fb.js">
+<link rel="modulepreload" href="./_npm/d3-shape@1.3.7/c24a29b0.js">
+<link rel="modulepreload" href="./_npm/d3-array@3.2.4/e95f898e.js">
+<link rel="modulepreload" href="./_npm/d3-axis@3.0.0/d44feff9.js">
+<link rel="modulepreload" href="./_npm/d3-brush@3.0.0/5830b12a.js">
+<link rel="modulepreload" href="./_npm/d3-chord@3.0.1/84d7b8e9.js">
+<link rel="modulepreload" href="./_npm/d3-color@3.1.0/2c0cdfa2.js">
+<link rel="modulepreload" href="./_npm/d3-contour@4.0.2/626bedc4.js">
+<link rel="modulepreload" href="./_npm/d3-delaunay@6.0.4/00c41b5d.js">
+<link rel="modulepreload" href="./_npm/d3-dispatch@3.0.1/b5f7cdc6.js">
+<link rel="modulepreload" href="./_npm/d3-drag@3.0.0/b22c5864.js">
+<link rel="modulepreload" href="./_npm/d3-ease@3.0.1/6f15f633.js">
+<link rel="modulepreload" href="./_npm/d3-fetch@3.0.1/ef1ec490.js">
+<link rel="modulepreload" href="./_npm/d3-force@3.0.0/5e1ff060.js">
+<link rel="modulepreload" href="./_npm/d3-format@3.1.0/5851d7ef.js">
+<link rel="modulepreload" href="./_npm/d3-geo@3.1.1/dcd02767.js">
+<link rel="modulepreload" href="./_npm/d3-hierarchy@3.1.2/f1db2593.js">
+<link rel="modulepreload" href="./_npm/d3-interpolate@3.0.1/034b7bcb.js">
+<link rel="modulepreload" href="./_npm/d3-path@3.1.0/4bb53638.js">
+<link rel="modulepreload" href="./_npm/d3-polygon@3.0.1/bbafde58.js">
+<link rel="modulepreload" href="./_npm/d3-quadtree@3.0.1/aa5b35a8.js">
+<link rel="modulepreload" href="./_npm/d3-random@3.0.1/32c7fec2.js">
+<link rel="modulepreload" href="./_npm/d3-scale@4.0.2/567840a0.js">
+<link rel="modulepreload" href="./_npm/d3-scale-chromatic@3.1.0/cf9b720b.js">
+<link rel="modulepreload" href="./_npm/d3-selection@3.0.0/5dcd62f4.js">
+<link rel="modulepreload" href="./_npm/d3-shape@3.2.0/f8e03c56.js">
+<link rel="modulepreload" href="./_npm/d3-time@3.1.0/5bc129e1.js">
+<link rel="modulepreload" href="./_npm/d3-time-format@4.1.0/19c92b44.js">
+<link rel="modulepreload" href="./_npm/d3-timer@3.0.1/f31b5398.js">
+<link rel="modulepreload" href="./_npm/d3-transition@3.0.1/8debb4ba.js">
+<link rel="modulepreload" href="./_npm/d3-zoom@3.0.0/4b0cc581.js">
+<link rel="modulepreload" href="./_npm/interval-tree-1d@1.0.4/a62ae5ce.js">
+<link rel="modulepreload" href="./_npm/internmap@1.0.1/201227d2.js">
+<link rel="modulepreload" href="./_npm/d3-path@1.0.9/3ecdfccb.js">
+<link rel="modulepreload" href="./_npm/internmap@2.0.3/5eed35fd.js">
+<link rel="modulepreload" href="./_npm/delaunator@5.0.1/e67acb27.js">
+<link rel="modulepreload" href="./_npm/binary-search-bounds@2.0.5/1ee6c50d.js">
+<link rel="modulepreload" href="./_npm/robust-predicates@3.0.2/8ac9039b.js">
+<script type="module">
+
+import {define} from "./_observablehq/client.d91634ff.js";
+import {registerFile} from "./_observablehq/stdlib.10504731.js";
+
+registerFile("./data/relationships_summary.csv", {"name":"./data/relationships_summary.csv","mimeType":"text/csv","path":"./_file/data/relationships_summary.07747068.csv","lastModified":1725963434264,"size":359473});
+
+define({id: "34b3244f", outputs: ["sankey","sankeyLinkHorizontal"], body: async () => {
+const {sankey, sankeyLinkHorizontal} = await import("./_npm/d3-sankey@0.12.3/4a69e793.js");
+
+return {sankey,sankeyLinkHorizontal};
+}});
+
+define({id: "60cef882", outputs: ["non_redundant_rels"], body: () => {
+const non_redundant_rels = [
+    "Maps to",
+    "Is a",
+    "SPL - RxNorm",
+    "Has Module",
+    "Has status",
+    "Concept replaces",
+    "Has method",
+    "ATC - RxNorm",
+    "Has finding site",
+    "Component of",
+    "Has property",
+    "Has asso morph",
+    "Concept same_as from",
+    "Drug class of drug",
+    "Concept poss_eq from",
+    "Has interprets",
+    "Has access",
+    "Concept was_a from",
+    "ATC - RxNorm sec up",
+    "Active ing of",
+    "Has pathology",
+    "Acc device used by",
+    "Device used by",
+    "Causative agent of",
+    "Dose form of",
+    "Source - RxNorm eq",
+    "Subst used by",
+    "SNOMED - RxNorm eq",
+    "Dir device of",
+    "Intent of",
+    "Due to of",
+    "Maps to value",
+    "Has interpretation",
+    "Has occurrence",
+    "Basis str subst of",
+    "Prec ingredient of",
+    "Plays role",
+    "Dir subst of",
+    "Has disposition",
+    "Has relat context",
+    "Has temporal context",
+    "Focus of",
+    "Has clinical course",
+    "ATC - RxNorm pr lat",
+    "Using finding method",
+    "Has inherent",
+    "Has finding context",
+    "Asso finding of",
+    "ATC - RxNorm pr up",
+    "Followed by",
+    "Occurs after",
+    "Modification of",
+    "Has route",
+    "Using finding inform",
+    "Spec active ing of",
+    "Asso with finding",
+    "Disp dose form of",
+    "SNOMED - ATC eq",
+    "ATC - RxNorm sec lat",
+    "Proc device of",
+    "Specimen subst of",
+    "Concept alt_to from",
+    "Has count of ing",
+    "Has dev intend site",
+    "During",
+    "Affected by process",
+    "Comp material of",
+    "Has prod character",
+    "Is sterile",
+    "Manifestation of",
+    "Has absorbability",
+    "Temp related to",
+    "Has state of matter",
+    "Indir device of",
+    "Specimen identity of",
+    "Process output of",
+    "Precondition of",
+    "Coating material of",
+    "Has severity",
+    "Has variant",
+    "Filling of",
+    "Surf character of",
+    "Before"
+    ]
+return {non_redundant_rels};
+}});
+
+define({id: "291101d0", inputs: ["FileAttachment"], outputs: ["file_input"], body: (FileAttachment) => {
+const file_input = FileAttachment("./data/relationships_summary.csv").csv();
+return {file_input};
+}});
+
+define({id: "9b3382fb", inputs: ["file_input","non_redundant_rels"], outputs: ["relationships_summary"], body: (file_input,non_redundant_rels) => {
+const relationships_summary = file_input.filter((row) => non_redundant_rels.includes(row.relationship));
+return {relationships_summary};
+}});
+
+define({id: "399fda6b", inputs: ["file_input"], outputs: ["domains"], body: (file_input) => {
+const domains = file_input.reduce((agg, row) => {
+        const existing_domain = agg.find(element => element == row.from_domain)
+        if (!existing_domain){
+            agg.push(row.from_domain)
+        }
+        return agg
+    }, [])
+return {domains};
+}});
+
+define({id: "6b94ea4b", inputs: ["view","Inputs","domains","html"], outputs: ["domain_filter"], body: (view,Inputs,domains,html) => {
+const domain_filter = view(
+    Inputs.form([
+        Inputs.checkbox(domains, {multiple: true, label: "Source domain", value: domains}),
+        Inputs.checkbox(domains, {multiple: true, label: "Destination domain", value: domains})
+        ],
+        {template: inputs => html`
+        <div>
+            <details><summary>Filter domains</summary>${inputs}</details>
+    `}))
+return {domain_filter};
+}});
+
+define({id: "37d4186a", inputs: ["relationships_summary","domain_filter","d3"], outputs: ["relationships_filtered_for_bar","relationship_grouped_bars"], body: (relationships_summary,domain_filter,d3) => {
+const relationships_filtered_for_bar = relationships_summary.filter(
+    (row) => (domain_filter[0].includes(row.from_domain)) & (domain_filter[1].includes(row.to_domain))
+);
+const relationship_grouped_bars = d3.rollups(relationships_filtered_for_bar, v => d3.sum(v, d => d.count), d => d.relationship)
+                                    .sort((a,b) => b[1]-a[1])
+return {relationships_filtered_for_bar,relationship_grouped_bars};
+}});
+
+define({id: "5b76cc84", inputs: ["view","Inputs","relationship_grouped_bars"], outputs: ["bar_top_n"], body: (view,Inputs,relationship_grouped_bars) => {
+const bar_top_n = view(Inputs.range([0, relationship_grouped_bars.length], {value: 10, step: 1, label: "Show top"}))
+return {bar_top_n};
+}});
+
+define({id: "2f163c7f", inputs: ["relationship_grouped_bars","bar_top_n","display","Plot","d3"], outputs: ["top_rel_bar"], body: (relationship_grouped_bars,bar_top_n,display,Plot,d3) => {
+const top_rel_bar = relationship_grouped_bars.slice(0, bar_top_n);
+
+display(
+    Plot.plot({
+        marginLeft: d3.max(top_rel_bar, (d) => d[0].length)*6,
+        marks: [
+            Plot.ruleX([0]),
+            Plot.barX(top_rel_bar, {y: ([key]) => key, x: ([, value]) => value, sort: {y: "x", reverse: true}})
+        ]}
+    )
+)
+return {top_rel_bar};
+}});
+
+define({id: "953c4c7a", inputs: ["d3","relationships_filtered_for_bar"], outputs: ["heatmap_rels"], body: (d3,relationships_filtered_for_bar) => {
+const heatmap_rels = d3.rollups(relationships_filtered_for_bar,
+    v => d3.sum(v, d => d.count),
+    d => d.from_domain,
+    d => d.to_domain
+    )
+    .reduce(
+        (agg, group) => {
+        group[1].forEach(
+            (e) => {
+                agg.push({from_domain: group[0], to_domain: e[0], count: e[1]})
+            }
+        )
+        return agg
+    }, []
+    );
+return {heatmap_rels};
+}});
+
+define({id: "2a5478f0", inputs: ["heatmap_rels","d3","display"], outputs: ["width","height","hm_from_domains","hm_to_domains","margin","heatmap","g","hm_x","hm_y","myColor","tooltip","mouseover","mousemove","mouseleave"], body: (heatmap_rels,d3,display) => {
+const width = 640;
+const height = 640;
+
+const hm_from_domains = Array.from(new Set(heatmap_rels.map(d => d.from_domain)));
+const hm_to_domains = Array.from(new Set(heatmap_rels.map(d => d.to_domain)));
+
+const margin = {
+    top: 60,
+    right: 30,
+    bottom: Math.max(...(hm_from_domains.map(el => el.length)))*6,
+    left: Math.max(...(hm_to_domains.map(el => el.length)))*6
+};
+
+const heatmap = d3.create("svg")
+    .attr("width", width)
+    .attr("height", height)
+    .attr("viewBox", [0, 0, width, height])
+    .attr("style", "max-width: 100%; height: auto;");
+
+const g = heatmap.append("g")
+    .attr("transform", `translate(${margin.left},${margin.top})`);
+
+const hm_x = d3.scaleBand()
+    .range([0, width - margin.left - margin.right])
+    .domain(hm_from_domains)
+    .padding(0.05);
+
+g.append("g")
+    .attr("transform", `translate(0,${height - margin.top - margin.bottom})`)
+    .call(d3.axisBottom(hm_x))
+    .selectAll("text")
+    .attr("transform", "rotate(-45)")
+    .style("text-anchor", "end");
+
+const hm_y = d3.scaleBand()
+    .range([height - margin.top - margin.bottom, 0])
+    .domain(hm_to_domains)
+    .padding(0.05);
+
+g.append("g")
+    .call(d3.axisLeft(hm_y));
+
+// Build color scale
+const myColor = d3.scaleSequential()
+    .interpolator(d3.interpolateRgbBasis(["purple", "green"]))
+    .domain([0, d3.max(heatmap_rels, d => d.count)]);
+
+// Create a tooltip
+const tooltip = d3.select(document.createElement("div"))
+    .style("opacity", 0)
+    .attr("class", "tooltip")
+    .style("background-color", "white")
+    .style("border", "solid")
+    .style("border-width", "2px")
+    .style("border-radius", "5px")
+    .style("padding", "5px")
+    .style("position", "absolute");
+
+document.body.appendChild(tooltip.node());
+
+// Three functions that change the tooltip when users hover / move / leave a cell
+const mouseover = function(event, d) {
+    tooltip.style("opacity", 1);
+    d3.select(this)
+        .style("stroke", "black")
+        .style("opacity", 1);
+}
+
+const mousemove = function(event, d) {
+    tooltip.html(`From: ${d.from_domain}<br>To: ${d.to_domain}<br>Count: ${d.count}`)
+        .style("left", (event.pageX + 10) + "px")
+        .style("top", (event.pageY - 10) + "px")
+        .style("color", "black");
+}
+
+const mouseleave = function(event, d) {
+    tooltip.style("opacity", 0);
+    d3.select(this)
+        .style("stroke", "none")
+        .style("opacity", 0.8);
+}
+
+// Add the squares
+g.selectAll()
+    .data(heatmap_rels)
+    .enter()
+    .append("rect")
+        .attr("x", d => hm_x(d.from_domain))
+        .attr("y", d => hm_y(d.to_domain))
+        .attr("rx", 4)
+        .attr("ry", 4)
+        .attr("width", hm_x.bandwidth())
+        .attr("height", hm_y.bandwidth())
+        .style("fill", d => myColor(d.count))
+        .style("stroke-width", 4)
+        .style("stroke", "none")
+        .style("opacity", 0.8)
+    .on("mouseover", mouseover)
+    .on("mousemove", mousemove)
+    .on("mouseleave", mouseleave);
+
+// Add title to graph
+heatmap.append("text")
+    .attr("x", width / 2)
+    .attr("y", margin.top / 2)
+    .attr("text-anchor", "middle")
+    .style("font-size", "22px")
+    .style("stroke", "#FFFFFF")
+    .text("Heatmap of Domain Relationships");
+
+display(heatmap.node());
+return {width,height,hm_from_domains,hm_to_domains,margin,heatmap,g,hm_x,hm_y,myColor,tooltip,mouseover,mousemove,mouseleave};
+}});
+
+define({id: "52560ced", inputs: ["view","Inputs","domains"], outputs: ["m_graph_source"], body: (view,Inputs,domains) => {
+const m_graph_source = view(Inputs.select(domains))
+return {m_graph_source};
+}});
+
+define({id: "06028b69", inputs: ["relationships_summary","m_graph_source","d3"], outputs: ["m_graph_filtered","m_graph_rollup","m_graph_nodes","m_graph_links","m_graph_data"], body: (relationships_summary,m_graph_source,d3) => {
+const m_graph_filtered = relationships_summary.filter(el => el.from_domain == m_graph_source)
+const m_graph_rollup = d3.rollups(m_graph_filtered, v => d3.sum(v, d => d.count), d => d.to_domain, d => d.relationship)
+
+const m_graph_nodes = [
+    {name: "Source: " + m_graph_source},
+    ...m_graph_rollup.map(e => {return {name: e[0]}})
+]
+
+const m_graph_links = m_graph_rollup.reduce(
+    (agg, e) => {
+        const links = e[1].map(rel => {
+            return {
+                source: "Source: " + m_graph_source,
+                target: e[0],
+                value: rel[1],
+                type: rel[0],
+                color: "red",
+            }
+        })
+        return [...agg, ...links]
+        return agg
+    }, []
+)
+
+const m_graph_data = {
+    nodes: m_graph_nodes,
+    links: m_graph_links
+}
+return {m_graph_filtered,m_graph_rollup,m_graph_nodes,m_graph_links,m_graph_data};
+}});
+
+define({id: "b42a0b3e", inputs: ["d3","sankey","m_graph_data","sankeyLinkHorizontal","display"], outputs: ["sankey_width","sankey_height","sankey_margin","sankey_color","sankeyGenerator","nodes","links","svg","link","node","label"], body: (d3,sankey,m_graph_data,sankeyLinkHorizontal,display) => {
+// Set up dimensions
+const sankey_width = 640;
+const sankey_height = 400;
+const sankey_margin = {top: 10, right: 120, bottom: 10, left: 10};
+
+const sankey_color = d3.scaleOrdinal(d3.schemeCategory10);
+
+// Set up the sankey generator
+const sankeyGenerator = sankey()
+    .nodeId(d => d.name)
+    .nodeWidth(15)
+    .nodePadding(10)
+    .extent([[sankey_margin.left, sankey_margin.top], [sankey_width - sankey_margin.right, sankey_height - sankey_margin.bottom]]);
+
+// Generate the sankey data
+const {nodes, links} = sankeyGenerator({
+    nodes: m_graph_data.nodes.map(d => Object.assign({}, d)),
+    links: m_graph_data.links.map(d => Object.assign({}, d))
+  });
+
+const svg = d3.create("svg")
+    .attr("viewBox", [0, 0, sankey_width, sankey_height])
+    .attr("width", sankey_width)
+    .attr("height", sankey_height)
+    .attr("style", "max-width: 100%; height: auto;");
+
+// Add the links
+const link = svg.append("g")
+    .selectAll("path")
+    .data(links)
+    .join("path")
+      .attr("d", sankeyLinkHorizontal())
+      .attr("fill", "none")
+      .attr("stroke", d => sankey_color(d.type))
+      .attr("stroke-width", d => Math.max(1, d.width))
+      .attr("opacity", 0.5);
+
+link.append("title")
+    .text(d => `${d.source.name} → ${d.target.name}\n${d.value} ${d.type}`);
+
+// Add the nodes
+const node = svg.append("g")
+    .selectAll("rect")
+    .data(nodes)
+    .join("rect")
+      .attr("x", d => d.x0)
+      .attr("y", d => d.y0)
+      .attr("height", d => d.y1 - d.y0)
+      .attr("width", d => d.x1 - d.x0)
+      .attr("fill", "#bbb");
+
+node.append("title")
+    .text(d => `${d.id}\n${d.value}`);
+
+// Add the labels
+const label = svg.append("g")
+    .attr("font-family", "sans-serif")
+    .attr("font-size", 10)
+    .selectAll("text")
+    .data(nodes)
+    .join("text")
+      .attr("x", d => d.x0 < sankey_width / 2 ? d.x1 + 6 : d.x0 - 6)
+      .attr("y", d => (d.y1 + d.y0) / 2)
+      .attr("dy", "0.35em")
+      .attr("text-anchor", d => d.x0 < sankey_width / 2 ? "start" : "end")
+      .text(d => d.name);
+
+// I had a legend here, but there are often too many relationship IDs for it to be useful, so tooltips it is
+
+display(svg.node());
+return {sankey_width,sankey_height,sankey_margin,sankey_color,sankeyGenerator,nodes,links,svg,link,node,label};
+}});
+
+</script>
+<input id="observablehq-sidebar-toggle" type="checkbox" title="Toggle sidebar">
+<label id="observablehq-sidebar-backdrop" for="observablehq-sidebar-toggle"></label>
+<nav id="observablehq-sidebar">
+  <ol>
+    <label id="observablehq-sidebar-close" for="observablehq-sidebar-toggle"></label>
+    <li class="observablehq-link"><a href="./">Visualise OMOP</a></li>
+  </ol>
+  <ol>
+    <li class="observablehq-link observablehq-link-active"><a href="./relationships">OMOP concept relationships</a></li>
+  </ol>
+</nav>
+<script>{Object.assign(document.createElement("a"),{href:""}).password&&location.replace(location.href);const e=document.querySelector("#observablehq-sidebar"),t=document.querySelector("#observablehq-sidebar-toggle"),r=sessionStorage.getItem("observablehq-sidebar");r?t.checked=r==="true":t.indeterminate=!0;for(const o of document.querySelectorAll("#observablehq-sidebar summary")){const s=o.parentElement;switch(sessionStorage.getItem(`observablehq-sidebar:${o.textContent}`)){case"true":s.open=!0;break;case"false":s.classList.contains("observablehq-section-active")||(s.open=!1);break}}addEventListener("beforeunload",()=>sessionStorage.setItem("observablehq-sidebar-scrolly",`${e.scrollTop}`));const a=sessionStorage.getItem("observablehq-sidebar-scrolly");a!=null&&(e.style.cssText="overflow: hidden;",e.scrollTop=+a,e.style.cssText="");}</script>
+<aside id="observablehq-toc" data-selector="h1:not(:first-of-type)[id], h2:first-child[id], :not(h1) + h2[id]">
+<nav>
+</nav>
+</aside>
+<div id="observablehq-center">
+<main id="observablehq-main" class="observablehq">
+<h1 id="omop-concept-relationships" tabindex="-1"><a class="observablehq-header-anchor" href="#omop-concept-relationships">OMOP concept relationships</a></h1>
+<div class="observablehq observablehq--block"><!--:34b3244f:--></div>
+<p>OMOP concepts have relationships to one another. There are many different types of relationships.
+It's helpful to look at the nature of the concepts in different relationships.</p>
+<details>
+    <summary>If you think the vocabularies have changed</summary>
+    <p>
+        This SQL can be used to build <tt>./data/relationships_summary.csv</tt>
+        <br>
+        <br>
+        <tt>SELECT
+            c1.domain_id as from_domain,
+            c1.vocabulary_id as from_vocab,
+            c1.standard_concept as from_standard,
+            c2.domain_id as to_domain,
+            c2.vocabulary_id as to_vocab,
+            c2.standard_concept as to_standard,
+            cr.relationship_id as relationship,
+            COUNT(c1.concept_id)
+       FROM omop.concept_relationship cr
+       JOIN omop.concept c1 ON cr.concept_id_1 = c1.concept_id
+       JOIN omop.concept c2 ON cr.concept_id_2 = c2.concept_id
+       GROUP BY
+           from_domain,
+           from_vocab,
+           from_standard,
+           to_domain,
+           to_vocab,
+           to_standard,
+           relationship;
+        </tt>
+    </p>
+</details>
+<p>The first thing to look at is how many relationships there are, and what the type of relationship is.</p>
+<details>
+    <summary>Note</summary>
+    <p>There are a lot of redundant relationship IDs, as many relationships are inverses of one another. For example, "Maps to" and "Mapped from" are the same, but with the concepts swapped. For our purposes, these are unnecessary</p>
+</details>
+Below is a bar chart of the counts of each relationship ID. You can filter by domain.
+<div class="observablehq observablehq--block"><!--:60cef882:--></div>
+<div class="observablehq observablehq--block"><!--:291101d0:--></div>
+<div class="observablehq observablehq--block"><!--:9b3382fb:--></div>
+<div class="observablehq observablehq--block"><!--:399fda6b:--></div>
+<div class="observablehq observablehq--block"><!--:6b94ea4b:--></div>
+<div class="observablehq observablehq--block"><!--:37d4186a:--></div>
+<div class="observablehq observablehq--block"><!--:5b76cc84:--></div>
+<div class="observablehq observablehq--block"><!--:2f163c7f:--></div>
+<div class="observablehq observablehq--block"><!--:953c4c7a:--></div>
+<p>That's a nice little summary of the overall counts. What are the domains being mapped to and from?</p>
+<p>Below is a heatmap for this. It's filtered on the same domains as the bar chart.</p>
+<div class="observablehq observablehq--block"><!--:2a5478f0:--></div>
+<p>I'm sorry choosing domains is a pain.</p>
+<p>The heatmap shows what is being mapped, but not the nature of the relationships. The diagram below shows a more detailed view of the nature of relationships. The domain being mapped from is shown on the left, and the domains it is mapped to is shown on the right. The stripes running left to right show are thick proportional to the count of relationships, coloured by the type of relationship. You can hover over the stripe to see what the relationship is.</p>
+<div class="observablehq observablehq--block"><!--:52560ced:--></div>
+<div class="observablehq observablehq--block"><!--:06028b69:--></div>
+<div class="observablehq observablehq--block"><!--:b42a0b3e:--></div>
+<p>I had thought to show more domains on the left, but that would be too chaotic.</p>
+<!--
+TODO: There are a few million relationships in OMOP's relationships table. It wouldn't be unfeasible to visualise this as a graph. It would be a bit big, but maybe?
+-->
+</main>
+<footer id="observablehq-footer">
+<nav><a rel="prev" href="./"><span>Visualise OMOP</span></a></nav>
+<div>Built with <a href="https://observablehq.com/" target="_blank" rel="noopener noreferrer">Observable</a> on <a title="2024-09-17T12:57:54">Sep 17, 2024</a>.</div>
+</footer>
+</div>

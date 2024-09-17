@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="generator" content="Observable Framework v1.11.0">
+<title>Visualise OMOP</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,200..900;1,8..60,200..900&amp;display=swap" crossorigin>
+<link rel="preload" as="style" href="./_observablehq/theme-parchment.bf6a547e.css">
+<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,200..900;1,8..60,200..900&amp;display=swap" crossorigin>
+<link rel="stylesheet" type="text/css" href="./_observablehq/theme-parchment.bf6a547e.css">
+<link rel="modulepreload" href="./_observablehq/client.d91634ff.js">
+<link rel="modulepreload" href="./_observablehq/runtime.62b61640.js">
+<link rel="modulepreload" href="./_observablehq/stdlib.10504731.js">
+<link rel="modulepreload" href="./_npm/d3-dsv@3.0.1/407f7a1f.js">
+<link rel="modulepreload" href="./_npm/d3@7.9.0/7055d4c5.js">
+<link rel="modulepreload" href="./_npm/d3-array@3.2.4/e95f898e.js">
+<link rel="modulepreload" href="./_npm/d3-axis@3.0.0/d44feff9.js">
+<link rel="modulepreload" href="./_npm/d3-brush@3.0.0/5830b12a.js">
+<link rel="modulepreload" href="./_npm/d3-chord@3.0.1/84d7b8e9.js">
+<link rel="modulepreload" href="./_npm/d3-color@3.1.0/2c0cdfa2.js">
+<link rel="modulepreload" href="./_npm/d3-contour@4.0.2/626bedc4.js">
+<link rel="modulepreload" href="./_npm/d3-delaunay@6.0.4/00c41b5d.js">
+<link rel="modulepreload" href="./_npm/d3-dispatch@3.0.1/b5f7cdc6.js">
+<link rel="modulepreload" href="./_npm/d3-drag@3.0.0/b22c5864.js">
+<link rel="modulepreload" href="./_npm/d3-ease@3.0.1/6f15f633.js">
+<link rel="modulepreload" href="./_npm/d3-fetch@3.0.1/ef1ec490.js">
+<link rel="modulepreload" href="./_npm/d3-force@3.0.0/5e1ff060.js">
+<link rel="modulepreload" href="./_npm/d3-format@3.1.0/5851d7ef.js">
+<link rel="modulepreload" href="./_npm/d3-geo@3.1.1/dcd02767.js">
+<link rel="modulepreload" href="./_npm/d3-hierarchy@3.1.2/f1db2593.js">
+<link rel="modulepreload" href="./_npm/d3-interpolate@3.0.1/034b7bcb.js">
+<link rel="modulepreload" href="./_npm/d3-path@3.1.0/4bb53638.js">
+<link rel="modulepreload" href="./_npm/d3-polygon@3.0.1/bbafde58.js">
+<link rel="modulepreload" href="./_npm/d3-quadtree@3.0.1/aa5b35a8.js">
+<link rel="modulepreload" href="./_npm/d3-random@3.0.1/32c7fec2.js">
+<link rel="modulepreload" href="./_npm/d3-scale@4.0.2/567840a0.js">
+<link rel="modulepreload" href="./_npm/d3-scale-chromatic@3.1.0/cf9b720b.js">
+<link rel="modulepreload" href="./_npm/d3-selection@3.0.0/5dcd62f4.js">
+<link rel="modulepreload" href="./_npm/d3-shape@3.2.0/f8e03c56.js">
+<link rel="modulepreload" href="./_npm/d3-time@3.1.0/5bc129e1.js">
+<link rel="modulepreload" href="./_npm/d3-time-format@4.1.0/19c92b44.js">
+<link rel="modulepreload" href="./_npm/d3-timer@3.0.1/f31b5398.js">
+<link rel="modulepreload" href="./_npm/d3-transition@3.0.1/8debb4ba.js">
+<link rel="modulepreload" href="./_npm/d3-zoom@3.0.0/4b0cc581.js">
+<link rel="modulepreload" href="./_npm/internmap@2.0.3/5eed35fd.js">
+<link rel="modulepreload" href="./_npm/delaunator@5.0.1/e67acb27.js">
+<link rel="modulepreload" href="./_npm/robust-predicates@3.0.2/8ac9039b.js">
+<script type="module">
+
+import {define} from "./_observablehq/client.d91634ff.js";
+import {registerFile} from "./_observablehq/stdlib.10504731.js";
+
+registerFile("./data/all_concepts.csv", {"name":"./data/all_concepts.csv","mimeType":"text/csv","path":"./_file/data/all_concepts.10f9f616.csv","lastModified":1725892431640,"size":26762});
+
+define({id: "ec8f2019", inputs: ["FileAttachment"], outputs: ["concepts"], body: (FileAttachment) => {
+const concepts = FileAttachment("./data/all_concepts.csv").csv();
+return {concepts};
+}});
+
+define({id: "10be444a", inputs: ["concepts"], outputs: ["concept_hierarchy"], body: (concepts) => {
+const concept_hierarchy = concepts.reduce((acc, row) => {
+    const existing_domain = acc.find(element => element.name == row.domain_id);
+    if (existing_domain) {
+        const existing_vocab = existing_domain["children"].find(element => element.name == row.vocabulary_id);
+        if(existing_vocab) {
+            const existing_concept_class = existing_vocab["children"].find(element => element.name == row.concept_class_id);
+            if (existing_concept_class) {
+                existing_concept_class["children"].push({
+                    "name": row.standard_concept === "S" ? "Standard concept": row.standard_concept === "C" ? "Classification": "Non-standard concept",
+                    "value": row.count
+                })
+            } else {
+                existing_vocab["children"].push({
+                    "name": row.concept_class_id,
+                    "children": [
+                        {
+                            "name": row.standard_concept === "S" ? "Standard concept": row.standard_concept === "C" ? "Classification": "Non-standard concept",
+                            "value": row.count
+                        }
+
+                    ]
+                })
+            }
+        } else {
+            existing_domain["children"].push({
+                "name": row.vocabulary_id,
+                "children": [
+                    {
+                        "name": row.concept_class_id,
+                        "children": [
+                            {
+                                "name": row.standard_concept === "S" ? "Standard concept": row.standard_concept === "C" ? "Classification": "Non-standard concept",
+                                "value": row.count
+                            }
+                        ]
+                    }
+                ]
+            })
+        }
+    } else {
+        acc.push({
+            "name": row.domain_id,
+            "children": [
+                {
+                    "name": row.vocabulary_id,
+                    "children": [
+                        {
+                            "name": row.concept_class_id,
+                            "children": [
+                                {
+                                    "name": row.standard_concept === "S" ? "Standard concept" : row.standard_concept === "C" ? "Classification" : "Non-standard concept",
+                                    "value": row.count
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        })
+    }
+    return acc
+    }, [])
+return {concept_hierarchy};
+}});
+
+define({id: "085efaeb", inputs: ["d3","location","concept_hierarchy","display"], outputs: ["width","height","tile","count","Id","uid","hierarchy","root","x","y","format","name","svg","group","render","position","zoomin","zoomout","concept_treemap"], body: (d3,location,concept_hierarchy,display) => {
+  // I took this pretty much whole from https://observablehq.com/@d3/zoomable-treemap
+  // Specify the chart’s dimensions.
+  const width = 900;
+  const height = 600;
+
+  // This custom tiling function adapts the built-in binary tiling function
+  // for the appropriate aspect ratio when the treemap is zoomed-in.
+  function tile(node, x0, y0, x1, y1) {
+    d3.treemapBinary(node, 0, 0, width, height);
+    for (const child of node.children) {
+      child.x0 = x0 + child.x0 / width * (x1 - x0);
+      child.x1 = x0 + child.x1 / width * (x1 - x0);
+      child.y0 = y0 + child.y0 / height * (y1 - y0);
+      child.y1 = y0 + child.y1 / height * (y1 - y0);
+    }
+  }
+  var count = 0;
+  
+  function Id(id) {
+    this.id = id;
+    this.href = new URL(`#${id}`, location) + "";
+  }
+
+  Id.prototype.toString = function() {
+    return "url(" + this.href + ")";
+  };
+
+  function uid(name) {
+    return new Id("O-" + (name == null ? "" : name + "-") + ++count);
+  }
+
+  // Compute the layout.
+  const hierarchy = d3.hierarchy({
+      "name": "OMOP",
+      "children": concept_hierarchy
+  })
+    .sum(d => d.value)
+    .sort((a, b) => b.value - a.value);
+  const root = d3.treemap().tile(tile)(hierarchy);
+
+  // Create the scales.
+  const x = d3.scaleLinear().rangeRound([0, width]);
+  const y = d3.scaleLinear().rangeRound([0, height]);
+
+  // Formatting utilities.
+  const format = d3.format(",d");
+  const name = d => d.ancestors().reverse().map(d => d.data.name).join("/");
+
+  // Create the SVG container.
+  const svg = d3.create("svg")
+      .attr("viewBox", [0.5, -30.5, width, height + 30])
+      .attr("width", width)
+      .attr("height", height + 30)
+      .attr("style", "max-width: 100%; height: auto;")
+      .style("font", "10px sans-serif");
+
+  // Display the root.
+  let group = svg.append("g")
+      .call(render, root);
+
+  function render(group, root) {
+    const node = group
+      .selectAll("g")
+      .data(root.children.concat(root))
+      .join("g");
+
+    node.filter(d => d === root ? d.parent : d.children)
+        .attr("cursor", "pointer")
+        .on("click", (event, d) => d === root ? zoomout(root) : zoomin(d));
+
+    node.append("title")
+        .text(d => `${name(d)}\n${format(d.value)}`);
+
+    node.append("rect")
+        .attr("id", d => (d.leafUid = uid("leaf")).id)
+        .attr("fill", d => d === root ? "#fff" : d.children ? "#ccc" : "#ddd")
+        .attr("stroke", "#fff");
+
+    node.append("clipPath")
+        .attr("id", d => (d.clipUid = uid("clip")).id)
+      .append("use")
+        .attr("xlink:href", d => d.leafUid.href);
+
+    node.append("text")
+        .attr("clip-path", d => d.clipUid)
+        .attr("font-weight", d => d === root ? "bold" : null)
+      .selectAll("tspan")
+      .data(d => (d === root ? name(d) : d.data.name).split(/(?=[A-Z][^A-Z])/g).concat(format(d.value)))
+      .join("tspan")
+        .attr("x", 5)
+        .attr("y", (d, i, nodes) => `${(i === nodes.length - 1) * 0.3 + 1.1 + i * 0.7}em`)
+        .attr("fill-opacity", (d, i, nodes) => i === nodes.length - 1 ? 0.7 : null)
+        .attr("font-weight", (d, i, nodes) => i === nodes.length - 1 ? "normal" : null)
+        .text(d => d);
+
+    group.call(position, root);
+  }
+
+  function position(group, root) {
+    group.selectAll("g")
+        .attr("transform", d => d === root ? `translate(0,-30)` : `translate(${x(d.x0)},${y(d.y0)})`)
+      .select("rect")
+        .attr("width", d => d === root ? width : x(d.x1) - x(d.x0))
+        .attr("height", d => d === root ? 30 : y(d.y1) - y(d.y0));
+  }
+
+  // When zooming in, draw the new nodes on top, and fade them in.
+  function zoomin(d) {
+    const group0 = group.attr("pointer-events", "none");
+    const group1 = group = svg.append("g").call(render, d);
+
+    x.domain([d.x0, d.x1]);
+    y.domain([d.y0, d.y1]);
+
+    svg.transition()
+        .duration(750)
+        .call(t => group0.transition(t).remove()
+          .call(position, d.parent))
+        .call(t => group1.transition(t)
+          .attrTween("opacity", () => d3.interpolate(0, 1))
+          .call(position, d));
+  }
+
+  // When zooming out, draw the old nodes on top, and fade them out.
+  function zoomout(d) {
+    const group0 = group.attr("pointer-events", "none");
+    const group1 = group = svg.insert("g", "*").call(render, d.parent);
+
+    x.domain([d.parent.x0, d.parent.x1]);
+    y.domain([d.parent.y0, d.parent.y1]);
+
+    svg.transition()
+        .duration(750)
+        .call(t => group0.transition(t).remove()
+          .attrTween("opacity", () => d3.interpolate(1, 0))
+          .call(position, d))
+        .call(t => group1.transition(t)
+          .call(position, d.parent));
+  }
+  const concept_treemap = display(svg.node());
+return {width,height,tile,count,Id,uid,hierarchy,root,x,y,format,name,svg,group,render,position,zoomin,zoomout,concept_treemap};
+}});
+
+</script>
+<input id="observablehq-sidebar-toggle" type="checkbox" title="Toggle sidebar">
+<label id="observablehq-sidebar-backdrop" for="observablehq-sidebar-toggle"></label>
+<nav id="observablehq-sidebar">
+  <ol>
+    <label id="observablehq-sidebar-close" for="observablehq-sidebar-toggle"></label>
+    <li class="observablehq-link observablehq-link-active"><a href="./">Visualise OMOP</a></li>
+  </ol>
+  <ol>
+    <li class="observablehq-link"><a href="./relationships">OMOP concept relationships</a></li>
+  </ol>
+</nav>
+<script>{Object.assign(document.createElement("a"),{href:""}).password&&location.replace(location.href);const e=document.querySelector("#observablehq-sidebar"),t=document.querySelector("#observablehq-sidebar-toggle"),r=sessionStorage.getItem("observablehq-sidebar");r?t.checked=r==="true":t.indeterminate=!0;for(const o of document.querySelectorAll("#observablehq-sidebar summary")){const s=o.parentElement;switch(sessionStorage.getItem(`observablehq-sidebar:${o.textContent}`)){case"true":s.open=!0;break;case"false":s.classList.contains("observablehq-section-active")||(s.open=!1);break}}addEventListener("beforeunload",()=>sessionStorage.setItem("observablehq-sidebar-scrolly",`${e.scrollTop}`));const a=sessionStorage.getItem("observablehq-sidebar-scrolly");a!=null&&(e.style.cssText="overflow: hidden;",e.scrollTop=+a,e.style.cssText="");}</script>
+<div id="observablehq-center">
+<main id="observablehq-main" class="observablehq">
+<div class="hero">
+  <h1>Visualising OMOP</h1> 
+</div>
+<p>It's hard to get an idea of what the structure of the OMOP vocabularies are, so here's a nice interactive treemap to help.
+I've split the database in a slightly artificial hierarchy that runs:</p>
+<ol>
+<li>Domain</li>
+<li>Vocabulary</li>
+<li>Concept class</li>
+<li>Standard/Non-standard/Classification concept</li>
+</ol>
+<p>I know that vocabularies can contain concepts with several domains, but a treemap needs a hierarchy, and this is the best way to split things by my conception of the database.</p>
+<p>Click on it! When you click, it expands the box you've selected! To go back up a level, click the white bar at the top.</p>
+<div class="observablehq observablehq--block"><!--:ec8f2019:--></div>
+<div class="observablehq observablehq--block"><!--:10be444a:--></div>
+<div class="observablehq observablehq--block"><!--:085efaeb:--></div>
+<hr>
+<style>
+
+.hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: var(--sans-serif);
+  margin: 4rem 0 8rem;
+  text-wrap: balance;
+  text-align: center;
+}
+
+.hero h1 {
+  margin: 1rem 0;
+  padding: 1rem 0;
+  max-width: none;
+  font-size: 14vw;
+  font-weight: 900;
+  line-height: 1;
+  background: linear-gradient(30deg, var(--theme-foreground-focus), currentColor);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.hero h2 {
+  margin: 0;
+  max-width: 34em;
+  font-size: 20px;
+  font-style: initial;
+  font-weight: 500;
+  line-height: 1.5;
+  color: var(--theme-foreground-muted);
+}
+
+@media (min-width: 640px) {
+  .hero h1 {
+    font-size: 90px;
+  }
+}
+
+</style>
+</main>
+<footer id="observablehq-footer">
+<nav><a rel="next" href="./relationships"><span>OMOP concept relationships</span></a></nav>
+<div>Built with <a href="https://observablehq.com/" target="_blank" rel="noopener noreferrer">Observable</a> on <a title="2024-09-17T12:57:54">Sep 17, 2024</a>.</div>
+</footer>
+</div>
